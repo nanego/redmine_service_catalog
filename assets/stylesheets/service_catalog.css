@@ -5,5 +5,55 @@
 .icon-service-catalog {
     background-image: url(../images/routing-icon.png);
     padding-left: 25px;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
+}
+
+#service-catalog {
+    display: flex;
+}
+
+#service-catalog nav .category {
+    width: 250px;
+    background-color: #F0F0F0;
+    margin-bottom: 2px;
+    padding: 25px;
+    border-left: 5px #E65A21 solid;
+    display: block;
+    text-decoration: none;
+    color: #003052;
+}
+
+#service-catalog nav .category:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#service-catalog .services {
+    margin: 0 15px;
+}
+
+#service-catalog .services .service {
+    display: block;
+    border: lightgrey solid 1px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    float: left;
+    width: 250px;
+    height: 150px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    background-color: #F5F5F5;
+    color: #003052;
+}
+#service-catalog .services .service:hover {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.17);
+}
+#service-catalog .service-title{
+    padding: 20px;
+    background-color: white;
+    font-size: 13px;
+}
+#service-catalog .service-body{
+    padding: 20px;
 }

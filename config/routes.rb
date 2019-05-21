@@ -1,4 +1,8 @@
 RedmineApp::Application.routes.draw do
-  resources :services
+  resources :services do
+    collection do
+      get 'catalog'
+    end
+  end
   resources :service_categories
 end

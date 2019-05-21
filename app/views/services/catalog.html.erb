@@ -1,0 +1,28 @@
+<% html_title(l(:label_service_catalog)) %>
+
+<h2><span class="icon icon-service-catalog"><%= h "#{l(:label_service_catalog)}" %></span></h2>
+
+<div id="service-catalog">
+  <nav class="categories">
+    <% @service_categories.each do |category| %>
+      <%= link_to category.name, '#', class: "category" %>
+    <% end %>
+  </nav>
+  <div class="services">
+    <% @services.each do |service| %>
+      <%= link_to '#', class: "service" do %>
+        <div class="service-title"><%= service.name %></div>
+        <div class="service-body">
+          <% case service.service_type %>
+          <% when 'Wiki' %>
+            {lien vers le wiki}
+          <% when 'Link' %>
+            {lien externe}
+          <% when 'Template' %>
+            {lien vers le template}
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
