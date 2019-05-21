@@ -1,0 +1,22 @@
+<%= labelled_form_for @service, :html => {:id => 'service-form', :name => 'service-form_name'} do |f| %>
+
+  <%= error_messages_for @service %>
+
+  <div class="box tabular">
+    <div id="service_attributes">
+
+      <p><%= f.text_field :name, {required: true} %></p>
+
+      <p><%= f.select :service_type, options_for_select(Service::TYPES, @service.service_type) %></p>
+
+      <p><%= f.select :service_category_id,
+                      options_for_select(ServiceCategory.all.map {|s| [s.name, s.id]}, @service.service_category_id),
+                      {label: l(:field_service_category)},
+                      multiple: false %></p>
+
+    </div>
+  </div>
+
+  <%= submit_tag l(:button_save) %>
+
+<% end %>

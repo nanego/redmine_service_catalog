@@ -1,0 +1,9 @@
+#admin-menu a.service-catalog {
+    background-image: url(../images/routing-icon.png);
+}
+
+.icon-service-catalog {
+    background-image: url(../images/routing-icon.png);
+    padding-left: 25px;
+    background-repeat:no-repeat;
+}

@@ -1,0 +1,15 @@
+<%= labelled_form_for @category, :html => {:id => 'service-category-form', :name => 'service-category-form_name'} do |f| %>
+
+  <%= error_messages_for @category %>
+
+  <div class="box tabular">
+    <div id="service_category_attributes">
+
+      <p><%= f.text_field :name, {required: true} %></p>
+
+    </div>
+  </div>
+
+  <%= submit_tag l(:button_save) %>
+
+<% end %>

@@ -1,0 +1,46 @@
+<% html_title(l(:label_service_catalog)) %>
+
+<div class="contextual">
+  <%= link_to(l(:label_service_categories),
+              {:controller => 'service_categories', :action => 'index'},
+              :class => 'icon icon-settings', :method => :get) %>
+  <%= link_to(l(:label_new_service_catalog),
+              {:controller => 'services', :action => 'new'},
+              :class => 'icon icon-add', :method => :get) %>
+</div>
+
+<h2><span class="icon icon-service-catalog"><%= h "#{l(:label_service_catalog)}" %></span></h2>
+
+<% if @notice %>
+  <div class="flash notice"><%= @notice %></div>
+<% end %>
+
+<div class="services_box">
+  <% if @services.empty? %>
+    <%= l(:no_services) %>
+  <% else %>
+    <table class="list services" id="services_list">
+      <thead>
+      <tr>
+        <th><%= l(:field_name) %></th>
+        <th><%= l(:field_type) %></th>
+        <th><%= l(:field_category) %></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @services.each do |service| %>
+        <tr class="service">
+          <td><%= h(service.name) %></td>
+          <td><%= h(service.service_type) %></td>
+          <td><%= h(service.service_category) %></td>
+          <td class="buttons">
+            <%= link_to l(:button_edit), edit_service_path(id: service.id), :class => 'icon icon-edit' %>
+            <%= delete_link service_path(service) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

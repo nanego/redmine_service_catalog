@@ -1,0 +1,45 @@
+<% html_title(l(:label_service_categories)) %>
+
+<div class="contextual">
+  <%= link_to l(:label_service_catalog), services_path, class: "icon icon-service-catalog" %>
+  <%= link_to(l(:label_new_service_category),
+              {:controller => 'service_categories', :action => 'new'},
+              :class => 'icon icon-add', :method => :get) %>
+</div>
+
+<h2><span><%= h "#{l(:label_service_categories)}" %></span></h2>
+
+<% if @notice %>
+  <div class="flash notice"><%= @notice %></div>
+<% end %>
+
+<% if @categories.empty? %>
+  <div class="service_categories_box">
+    <%= l(:no_services) %>
+  </div>
+<% else %>
+
+  <div class="service_categories_box">
+
+    <table class="list service_categories" id="service_categories_list">
+      <thead>
+      <tr>
+        <th><%= l(:field_name) %></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @categories.each do |category| %>
+        <tr class="category">
+          <td><%= h(category.name) %></td>
+          <td class="buttons">
+            <%= link_to l(:button_edit), edit_service_category_path(id: category.id), :class => 'icon icon-edit' %>
+            <%= delete_link service_category_path(category) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+<% end %>

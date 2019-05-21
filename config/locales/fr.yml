@@ -1,3 +1,16 @@
 # French strings go here for Rails i18n
 fr:
-  # my_label: "My label"
+  label_service_catalog: Catalogue de services
+  label_new_service_catalog: Ajouter un service au catalogue
+  no_services: Aucun service référencé
+  label_new_service_category: Ajouter une catégorie
+  label_new_service: Nouveau service
+  field_service_category: Catégorie
+  label_service_categories: Catégories de service
+  notice_category_successfully_created: Catégorie ajoutée
+  notice_category_successfully_updated: Catégorie mise à jour
+  notice_category_successfully_deleted: Catégorie supprimée
+  notice_service_successfully_created: Service ajouté
+  notice_service_successfully_updated: Service mis à jour
+  notice_service_successfully_deleted: Service supprimé
+  label_edit_service: Modification du service
