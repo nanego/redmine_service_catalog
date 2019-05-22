@@ -13,6 +13,7 @@
       <%= link_to '#', class: "service" do %>
         <div class="service-title"><%= service.name %></div>
         <div class="service-body">
+          Description du service<br><br>
           <% case service.service_type %>
           <% when 'Wiki' %>
             {lien vers le wiki}

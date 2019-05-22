@@ -2,7 +2,6 @@ class ServicesController < ApplicationController
 
   before_action :require_admin, except: [:catalog]
   layout 'admin'
-  layout 'base', only: [:catalog]
 
   def index
     @services = Service.order("id").all
@@ -69,5 +68,8 @@ class ServicesController < ApplicationController
   def catalog
     @services = Service.order("id").all
     @service_categories = ServiceCategory.all
+    respond_to do |format|
+      format.html {render :layout => 'base'}
+    end
   end
 end
