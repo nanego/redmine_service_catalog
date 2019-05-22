@@ -30,6 +30,7 @@
 
 #service-catalog .services {
     margin: 0 15px;
+    flex: auto;
 }
 
 #service-catalog .services .service {
@@ -48,6 +49,9 @@
 }
 #service-catalog .services .service:hover {
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.17);
+}
+#service-catalog .services .service.active {
+    width: 100%;
 }
 #service-catalog .service-title{
     padding: 20px;

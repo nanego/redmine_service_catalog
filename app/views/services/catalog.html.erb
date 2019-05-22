@@ -27,3 +27,13 @@
     <% end %>
   </div>
 </div>
+
+<script>
+    $(document).on('click', '.service', function (e) {
+        let value = $(this).hasClass('active')
+        $('.service').removeClass('active')
+        if (value == false) {
+            $(this).addClass('active');
+        }
+    })
+</script>
