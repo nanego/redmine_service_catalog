@@ -10,6 +10,7 @@
 
 #service-catalog {
     display: flex;
+    flex-wrap: wrap;
 }
 
 #service-catalog nav .category {
@@ -47,17 +48,68 @@
     background-color: #F5F5F5;
     color: #003052;
 }
+
 #service-catalog .services .service:hover {
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.17);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.17);
 }
+
 #service-catalog .services .service.active {
     width: 100%;
 }
-#service-catalog .service-title{
+
+#service-catalog .service-title {
     padding: 20px;
     background-color: white;
     font-size: 13px;
 }
-#service-catalog .service-body{
+
+#service-catalog .service-body {
     padding: 20px;
+}
+
+#service-catalog .search input.apply {
+    border: 2px solid #003052;
+    border-radius: 20px;
+    color: #003052;
+    font-size: 16px;
+    padding: 6px 27px;
+    cursor: pointer;
+    background-color: #F5F5F5;
+}
+
+#service-catalog .search input#search_name {
+    font-size: 16px;
+    padding: 6px;
+    width: 300px;
+    margin-right: 15px;
+}
+
+#service-catalog .search {
+    margin: auto;
+}
+
+#service-catalog .actions {
+    margin: 60px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#service-catalog .actions .action {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    width: 300px;
+    color: #003052;
+    cursor: pointer;
+    border: 2px solid #003052;
+    background-color: #F5F5F5;
+}
+
+#service-catalog .actions h3 {
+    margin-top: 10px;
+    padding: 0;
+    color: #003052;
+    font-weight: bold;
 }

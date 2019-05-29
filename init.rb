@@ -13,6 +13,6 @@ Redmine::Plugin.register :redmine_service_catalog do
 end
 
 Redmine::MenuManager.map :top_menu do |menu|
-  menu.push :service_catalog, {:controller => 'services', action: 'catalog'}, :caption => :label_service_catalog,
+  menu.push :service_catalog, {:controller => 'services', action: 'home'}, :caption => :label_service_catalog,
             :if => Proc.new {User.current.beta_tester?}
 end

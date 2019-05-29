@@ -1,0 +1,28 @@
+<% html_title(l(:label_service_catalog)) %>
+
+<h2><span class="icon icon-service-catalog"><%= h "#{l(:label_service_catalog)}" %></span></h2>
+
+<div id="service-catalog">
+
+  <div class="actions">
+    <%= link_to catalog_services_path, class: "action" do %>
+      <h3>Accéder à un service</h3>
+      <p>Parcourir le catalogue</p>
+    <% end %>
+    <%= link_to catalog_services_path, class: "action" do %>
+      <h3>Demander de l'aide</h3>
+      <p>Signaler un incident, contacter le support</p>
+    <% end %>
+  </div>
+
+  <div class="search">
+    <%= form_for :search do |f| %>
+      <%= f.text_field :name, placeholder: "Rechercher un service", focus: :auto %>
+      <%= f.submit "J'y vais", class: "apply" %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+    document.getElementById('search_name').focus();
+</script>

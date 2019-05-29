@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
 
-  before_action :require_admin, except: [:catalog]
+  before_action :require_admin, except: [:catalog, :home]
   layout 'admin'
 
   def index
@@ -66,6 +66,14 @@ class ServicesController < ApplicationController
   end
 
   def catalog
+    @services = Service.order("id").all
+    @service_categories = ServiceCategory.all
+    respond_to do |format|
+      format.html {render :layout => 'base'}
+    end
+  end
+
+  def home
     @services = Service.order("id").all
     @service_categories = ServiceCategory.all
     respond_to do |format|
