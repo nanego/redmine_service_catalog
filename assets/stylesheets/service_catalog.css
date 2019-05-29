@@ -18,15 +18,22 @@
     background-color: #F0F0F0;
     margin-bottom: 2px;
     padding: 25px;
-    border-left: 5px #E65A21 solid;
+    border-left: 5px #CCC solid;
     display: block;
     text-decoration: none;
     color: #003052;
 }
 
-#service-catalog nav .category:hover {
+#service-catalog nav .category:hover, #service-catalog nav .category.active {
     text-decoration: none;
     font-weight: bold;
+    border-left: 5px #F66A31 solid;
+}
+
+#service-catalog nav .category.active {
+    text-decoration: none;
+    font-weight: bold;
+    border-left: 5px #E65A21 solid;
 }
 
 #service-catalog .services {
@@ -40,8 +47,8 @@
     margin-right: 1rem;
     margin-bottom: 1rem;
     float: left;
-    width: 250px;
-    height: 150px;
+    width: 300px;
+    height: 170px;
     overflow: hidden;
     text-align: center;
     text-decoration: none;
@@ -53,10 +60,6 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.17);
 }
 
-#service-catalog .services .service.active {
-    width: 100%;
-}
-
 #service-catalog .service-title {
     padding: 20px;
     background-color: white;
@@ -65,6 +68,11 @@
 
 #service-catalog .service-body {
     padding: 20px;
+}
+
+#service-catalog .service-body .template-projects{
+    height: 81px;
+    overflow: auto;
 }
 
 #service-catalog .search input.apply {
@@ -112,4 +120,24 @@
     padding: 0;
     color: #003052;
     font-weight: bold;
+}
+
+#service-catalog .category {
+    clear: both;
+}
+
+#service-catalog .category.hidden {
+    display: none;
+}
+
+#services_list, #services_list td {
+    text-align: left;
+}
+
+#services_list td.buttons {
+    text-align: right;
+}
+
+#service-form input#service_name {
+    width: 400px;
 }

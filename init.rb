@@ -10,6 +10,7 @@ Redmine::Plugin.register :redmine_service_catalog do
   menu :admin_menu, :service_catalog, { :controller => 'services', :action => 'index' },
        :caption => :label_service_catalog,
        :html => {:class => 'icon'}
+  requires_redmine_plugin :redmine_base_select2, :version_or_higher => '4.0.0'
 end
 
 Redmine::MenuManager.map :top_menu do |menu|

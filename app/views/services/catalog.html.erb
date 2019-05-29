@@ -1,39 +1,96 @@
 <% html_title(l(:label_service_catalog)) %>
 
-<h2><span class="icon icon-service-catalog"><%= h "#{l(:label_service_catalog)}" %></span></h2>
+<h2>
+  <%= link_to home_services_path do %>
+    <span class="icon icon-service-catalog"><%= h "#{l(:label_service_catalog)}" %></span>
+  <% end %>
+</h2>
 
 <div id="service-catalog">
   <nav class="categories">
     <% @service_categories.each do |category| %>
-      <%= link_to category.name, '#', class: "category" %>
+      <%= link_to category.name, '#', class: "category", data: {:category_id => category.id} %>
     <% end %>
   </nav>
+
   <div class="services">
-    <% @services.each do |service| %>
-      <%= link_to '#', class: "service" do %>
-        <div class="service-title"><%= service.name %></div>
-        <div class="service-body">
-          Description du service<br><br>
+
+    <% @services_by_category.each do |category, services| %>
+
+      <div class="category category-<%= category.id %>">
+
+        <h3 class="subtitle-category" id="<%= category.name.parameterize %>">
+          <%= category %>
+        </h3>
+
+        <% services.each do |service| %>
+
           <% case service.service_type %>
-          <% when 'Wiki' %>
-            {lien vers le wiki}
+        <% when 'Wiki' %>
+            <%= link_to service, class: "service" do %>
+              <div class="service-title"><%= service.name %></div>
+              <div class="service-body">
+                {lien vers le wiki à définir}
+              </div>
+            <% end %>
+
           <% when 'Link' %>
-            {lien externe}
+            <%= link_to service, class: "service" do %>
+              <div class="service-title"><%= service.name %></div>
+              <div class="service-body">
+                {lien externe à définir}
+              </div>
+            <% end %>
+
           <% when 'Template' %>
-            {lien vers le template}
+            <div class="service">
+              <div class="service-title"><%= service.name %></div>
+              <div class="service-body">
+                <% if service.issue_template.present? %>
+                  <div class="template-projects">
+                    <% service.issue_template.projects.each do |project| %>
+                      <%= link_to project, new_project_issue_path(project_id: project.id, template_id: service.issue_template.id), class: 'catalog_list_templates_projects' %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           <% end %>
-        </div>
-      <% end %>
+
+        <% end %>
+
+      </div>
+
     <% end %>
+
   </div>
+
+
 </div>
 
 <script>
-    $(document).on('click', '.service', function (e) {
+    $(document).on('click', 'nav .category', function (e) {
         let value = $(this).hasClass('active')
-        $('.service').removeClass('active')
+        $('nav .category').removeClass('active')
+        $('.services .category').removeClass('hidden')
         if (value == false) {
-            $(this).addClass('active');
+            activate_category($(this).data('category-id'))
         }
     })
+    <% if params['category_id'].present? %>
+    activate_category(<%= params['category_id'] %>)
+    <% end %>
+
+    function setCategoryParam(category_id) {
+        var searchParams = new URLSearchParams(window.location.search)
+        searchParams.set('category_id', category_id)
+        window.history.replaceState({}, '', location.pathname + '?' + searchParams)
+    }
+
+    function activate_category(category_id) {
+        $('nav .category[data-category-id="' + category_id + '"]').addClass('active')
+        $('.services .category').addClass('hidden')
+        $('.services .category-' + category_id).removeClass('hidden')
+        setCategoryParam(category_id)
+    }
 </script>

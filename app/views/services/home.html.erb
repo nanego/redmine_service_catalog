@@ -16,13 +16,29 @@
   </div>
 
   <div class="search">
-    <%= form_for :search do |f| %>
+    <%= form_for :search, url: service_path(:search), method: :get do |f| %>
       <%= f.text_field :name, placeholder: "Rechercher un service", focus: :auto %>
       <%= f.submit "J'y vais", class: "apply" %>
     <% end %>
   </div>
 </div>
 
-<script>
+<script type="text/javascript">
     document.getElementById('search_name').focus();
+    $(function () {
+        let data = [];
+        <% @services.each do |service| %>
+        data.push(
+            {
+                id: '<%= service.id %>',
+                text: '<%= escape_javascript(raw service.name) %>'
+            }
+        )
+        <% end %>
+        $('#search_name').select2({
+            multiple: false,
+            data: data,
+            containerCss: {minWidth: '300px'}
+        });
+    });
 </script>

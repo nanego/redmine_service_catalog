@@ -1,14 +1,18 @@
 class ServicesController < ApplicationController
 
-  before_action :require_admin, except: [:catalog, :home]
+  before_action :require_admin, except: [:catalog, :home, :show]
   layout 'admin'
 
   def index
-    @services = Service.order("id").all
+    @services_by_category = Service.all.group_by(&:service_category)
   end
 
   def show
-    @service = Service.find(params[:id])
+    if params[:search]
+      @service = Service.find(params[:search][:name])
+    else
+      @service = Service.find(params[:id])
+    end
   end
 
   def new
@@ -66,6 +70,7 @@ class ServicesController < ApplicationController
   end
 
   def catalog
+    @services_by_category = Service.all.group_by(&:service_category)
     @services = Service.order("id").all
     @service_categories = ServiceCategory.all
     respond_to do |format|
@@ -74,8 +79,7 @@ class ServicesController < ApplicationController
   end
 
   def home
-    @services = Service.order("id").all
-    @service_categories = ServiceCategory.all
+    @services = Service.all
     respond_to do |format|
       format.html {render :layout => 'base'}
     end

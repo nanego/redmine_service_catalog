@@ -7,12 +7,19 @@
 
       <p><%= f.text_field :name, {required: true} %></p>
 
-      <p><%= f.select :service_type, options_for_select(Service::TYPES, @service.service_type) %></p>
-
       <p><%= f.select :service_category_id,
                       options_for_select(ServiceCategory.all.map {|s| [s.name, s.id]}, @service.service_category_id),
                       {label: l(:field_service_category)},
                       multiple: false %></p>
+      
+      <p><%= f.select :service_type, options_for_select(Service::TYPES, @service.service_type) %></p>
+
+      <p>
+        <%= f.select :issue_template_id,
+                     options_for_select(IssueTemplate.all.map {|s| [s.subject, s.id]}, @service.issue_template_id),
+                     {label: l(:label_issue_templates)},
+                     multiple: false %>
+      </p>
 
     </div>
   </div>
@@ -20,3 +27,11 @@
   <%= submit_tag l(:button_save) %>
 
 <% end %>
+
+<script type="text/javascript">
+    $(function () {
+        $('#service_issue_template_id').select2({
+            containerCss: {minWidth: '300px'}
+        });
+    });
+</script>

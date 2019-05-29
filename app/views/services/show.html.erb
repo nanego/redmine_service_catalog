@@ -1,0 +1,14 @@
+<div class="contextual">
+</div>
+
+<h2>
+  <%= link_to home_services_path do %>
+    <span class="icon icon-service-catalog"><%= h "#{l(:label_service_catalog)}" %></span>
+  <% end %>
+</h2>
+
+<h4>
+  <%= link_to "#{@service.category} >", catalog_services_path(category_id: @service.category.id) %>
+</h4>
+
+<h3><%= @service.name %></h3>
